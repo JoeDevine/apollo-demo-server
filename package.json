@@ -12,6 +12,7 @@
     "router:local": "./router --config ./router-config.yaml --supergraph ./supergraph.graphql",
     "router:install": "curl -sSL https://router.apollo.dev/download/nix/latest | sh",
     "test": "echo \"Error: no test specified\" && exit 1",
+    "otlp:start": "docker run -v $(pwd)/otlp-config.yaml:/etc/otelcol/config.yaml otel/opentelemetry-collector:0.63.0",
     "datadog:restart": "launchctl stop com.datadoghq.agent && launchctl start com.datadoghq.agent"
   },
   "repository": {
