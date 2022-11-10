@@ -28,3 +28,11 @@ service:
       receivers: [otlp]
       processors: [batch]
       exporters: [file]
+  telemetry:
+    logs:
+      level: debug
+      initial_fields:
+        service: apollo-demo
+    metrics:
+      level: detailed
+      address: 0.0.0.0:8888

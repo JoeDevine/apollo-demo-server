@@ -24,3 +24,9 @@ tar -xvf otelcol_0.63.0_darwin_arm64.tar.gz
 # Run collector with the local config
 npm run otlp:start
 ```
+
+## Query metrics of the Collector
+
+```
+http://localhost:8888/metrics
+```
