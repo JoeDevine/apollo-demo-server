@@ -1,0 +1,26 @@
+headers:
+  all:
+    request:
+      - propagate:
+          named: "Authorization"
+include_subgraph_errors:
+  all: true
+rhai:
+  scripts: "./router-scripts"
+  main: "main.rhai"
+sandbox:
+  enabled: true
+homepage:
+  enabled: false
+supergraph:
+  introspection: true
+telemetry:
+  tracing:
+    propagation:
+      datadog: true
+    trace_config:
+      service_name: "router"
+      service_namespace: "apollo"
+    datadog:
+      # Either 'default' or a URL
+      endpoint: "default"

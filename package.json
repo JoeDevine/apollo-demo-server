@@ -1,0 +1,33 @@
+{
+  "name": "apollo-demo-server",
+  "version": "1.0.0",
+  "description": "Demo repo for Apollo Features",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "compose": "rover supergraph compose --config ./supergraph-config.yaml > supergraph.graphql",
+    "publish:subgraph-demo": "rover subgraph publish Apollo-Demo-60bdi@current --name subgraphdemo --schema ./subgraph-demo/schema.graphql",
+    "publish:all": "npm run publish:subgraph-demo",
+    "router": "eval $(grep '^APOLLO_KEY' .env) APOLLO_GRAPH_REF=Apollo-Demo-60bdi@current ./router --config ./router-config.yaml",
+    "router:local": "./router --config ./router-config.yaml --supergraph ./supergraph.graphql",
+    "router:install": "curl -sSL https://router.apollo.dev/download/nix/latest | sh",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "datadog:restart": "launchctl stop com.datadoghq.agent && launchctl start com.datadoghq.agent"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JoeDevine/apollo-demo-server.git"
+  },
+  "keywords": [
+    "Apollo"
+  ],
+  "author": "Joe Devine",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JoeDevine/apollo-demo-server/issues"
+  },
+  "homepage": "https://github.com/JoeDevine/apollo-demo-server#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

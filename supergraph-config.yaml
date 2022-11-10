@@ -1,0 +1,6 @@
+federation_version: 2
+subgraphs:
+  subgraphdemo:
+    routing_url: http://localhost:4001/
+    schema:
+      file: "./subgraph-demo/schema.graphql"
