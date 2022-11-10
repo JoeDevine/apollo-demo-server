@@ -5,10 +5,12 @@ receivers:
 
 processors:
   batch:
+  batch/test:
 
 exporters:
   file:
     path: ./output.json
+
   logging:
     loglevel: debug
 

@@ -18,7 +18,7 @@ telemetry:
   metrics:
     otlp:
       # Either 'default' or a URL
-      endpoint: default
+      endpoint: http://127.0.0.1:4318
 
       # Optional timeout in humatime form
       timeout: 2s
