@@ -10,7 +10,7 @@ npm start
 ## Start the router locally
 
 ```
-#From the project root
+# From project root
 npm run router:local
 ```
 
