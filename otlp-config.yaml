@@ -1,7 +1,7 @@
 receivers:
   otlp:
     protocols:
-      http:
+      grpc:
 
 processors:
   batch:
@@ -10,7 +10,6 @@ processors:
 exporters:
   file:
     path: ./output.json
-
   logging:
     loglevel: debug
 
