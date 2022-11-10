@@ -20,18 +20,5 @@ telemetry:
       # Either 'default' or a URL
       endpoint: default
 
-      # Optional protocol. Only grpc is supported currently.
-      # Setting to http will result in configuration failure.
-      protocol: grpc
-
-      # Optional Grpc configuration
-      grpc:
-        domain_name: "my.domain"
-        key: ""
-        ca: ""
-        cert: ""
-        metadata:
-          foo: bar
-
       # Optional timeout in humatime form
       timeout: 2s
