@@ -15,12 +15,23 @@ homepage:
 supergraph:
   introspection: true
 telemetry:
-  tracing:
-    propagation:
-      datadog: true
-    trace_config:
-      service_name: "router"
-      service_namespace: "apollo"
-    datadog:
+  metrics:
+    otlp:
       # Either 'default' or a URL
-      endpoint: "default"
+      endpoint: default
+
+      # Optional protocol. Only grpc is supported currently.
+      # Setting to http will result in configuration failure.
+      protocol: grpc
+
+      # Optional Grpc configuration
+      grpc:
+        domain_name: "my.domain"
+        key: ""
+        ca: ""
+        cert: ""
+        metadata:
+          foo: bar
+
+      # Optional timeout in humatime form
+      timeout: 2s
