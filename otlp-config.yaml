@@ -5,7 +5,8 @@ receivers:
 
 processors:
   batch:
-  batch/test:
+    timeout: 15s
+    send_batch_size: 90
 
 exporters:
   file:
