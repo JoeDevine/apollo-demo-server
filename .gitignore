@@ -5,3 +5,4 @@ node_modules
 otelcol
 output.json
 logs-*
+!logs-example.json
