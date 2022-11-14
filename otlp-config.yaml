@@ -2,6 +2,7 @@ receivers:
   otlp:
     protocols:
       grpc:
+      http:
 
 processors:
   batch:
@@ -14,20 +15,26 @@ exporters:
   logging:
     loglevel: debug
 
+  otlp:
+    endpoint: 127.0.0.1:443
+    tls:
+      cert_file: cert.pem
+      key_file: cert-key.pem
+
 service:
   pipelines:
     traces:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file]
+      exporters: [otlp]
     metrics:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file]
+      exporters: [otlp]
     logs:
       receivers: [otlp]
       processors: [batch]
-      exporters: [file]
+      exporters: [otlp]
   telemetry:
     logs:
       level: debug

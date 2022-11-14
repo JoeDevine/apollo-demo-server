@@ -1,0 +1,19 @@
+{
+  "name": "grpc-receiver",
+  "version": "1.0.0",
+  "description": "Custom Receiver for OTLP using gRPC",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "author": "Joe Devine",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/grpc-js": "^1.7.3",
+    "@grpc/proto-loader": "^0.7.3",
+    "async": "^3.2.4",
+    "google-protobuf": "^3.21.2"
+  }
+}

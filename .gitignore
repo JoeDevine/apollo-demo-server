@@ -7,3 +7,5 @@ output.json
 logs-*
 !logs-example.json
 **/build
+**/.env
+**/*-telemetry.json
