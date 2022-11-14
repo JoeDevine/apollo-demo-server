@@ -6,3 +6,4 @@ otelcol
 output.json
 logs-*
 !logs-example.json
+**/build
