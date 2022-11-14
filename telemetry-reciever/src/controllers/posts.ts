@@ -18,6 +18,8 @@ const addPost = async (req: Request, res: Response, next: NextFunction) => {
     `https://jsonplaceholder.typicode.com/posts`,
     posts
   );
+
+  console.log("Body ->", req.body);
   // return response
   return res.status(200).json({
     message: response.data,
