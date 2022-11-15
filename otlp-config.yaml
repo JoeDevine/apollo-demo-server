@@ -18,8 +18,8 @@ exporters:
   otlp:
     endpoint: 127.0.0.1:443
     tls:
-      cert_file: cert.pem
-      key_file: cert-key.pem
+      cert_file: ./certs/cert.pem
+      key_file: ./certs/cert-key.pem
 
 service:
   pipelines:
