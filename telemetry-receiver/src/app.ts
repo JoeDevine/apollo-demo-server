@@ -1,4 +1,4 @@
-const https = require("https");
+const http = require("http");
 import express, { Express } from "express";
 import morgan from "morgan";
 import fs from "fs";
@@ -32,13 +32,7 @@ router.use((req, res, next) => {
 router.use("/", routes);
 
 /** Server */
-const httpsServer = https.createServer(
-  {
-    key: fs.readFileSync("./src/ca-key.pem"),
-    cert: fs.readFileSync("./src/ca.pem"),
-  },
-  router
-);
+const httpsServer = http.createServer(router);
 const PORT: any = process.env.PORT ?? 6060;
 httpsServer.listen(PORT, () =>
   console.log(`The server is running on port ${PORT}`)
