@@ -10,9 +10,8 @@ const telemetry_proto =
 const server_host = `0.0.0.0:${process.env.SERVER_PORT || 443}`;
 
 const sendTelemetry = ({ request }) => {
-  console.log("SendTelemetry Called", request);
+  console.log("SendTelemetry Called with data ", request);
   const filename = `./${Date.now()}-telemetry.json`;
-  console.log("Writing file =>", filename);
 
   try {
     fs.writeFileSync(filename, JSON.stringify(request));
@@ -25,11 +24,11 @@ const sendTelemetry = ({ request }) => {
 const server = new grpc.Server();
 
 let credentials = grpc.ServerCredentials.createSsl(
-  fs.readFileSync("./cert.pem"),
+  fs.readFileSync("./certs/cert.pem"),
   [
     {
-      cert_chain: fs.readFileSync("./ca.pem"),
-      private_key: fs.readFileSync("./ca-key.pem"),
+      cert_chain: fs.readFileSync("./certs/ca.pem"),
+      private_key: fs.readFileSync("./certs/ca-key.pem"),
     },
   ],
   true
