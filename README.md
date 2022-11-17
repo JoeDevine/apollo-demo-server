@@ -25,6 +25,13 @@ tar -xvf otelcol_0.63.0_darwin_arm64.tar.gz
 npm run otlp:start
 ```
 
+## Start the gRPC Server to consume output of Open Telemetry Collector
+
+```
+cd grpc-receiver
+npm start
+```
+
 ## Query metrics of the Collector
 
 ```
