@@ -1,0 +1,26 @@
+name: Deploy Demo Subgraph
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "subgraph-demo/**"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
