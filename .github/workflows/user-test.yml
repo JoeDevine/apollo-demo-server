@@ -23,12 +23,13 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Change to Sub directory
+        run: cd subgraph-user
       - name: Use Node.js ${{ matrix.node-version }}
-      - run: cd subgraph-user
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
-      - run: cd subgraph-user && npm ci
+      - run: npm ci
       - run: pwd && npm run build --if-present
       - run: pwd && npm test
