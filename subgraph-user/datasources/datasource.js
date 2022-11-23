@@ -1,16 +1,16 @@
 const { RESTDataSource } = require("apollo-datasource-rest");
 
 // Example Data Source Logic
-class DemoAPI extends RESTDataSource {
+class UserAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = "http://localhost:4011/";
+    this.baseURL = "http://localhost:4012/";
   }
-  getData(id) {
-    return this.get(`data/${id}`);
+  getUser(id) {
+    return this.get(`user/${id}`);
   }
 
-  getDemoData() {
+  getUserData() {
     return {
       id: 123,
       data: "Test data for demo purposes",
@@ -18,4 +18,4 @@ class DemoAPI extends RESTDataSource {
   }
 }
 
-module.exports = DemoAPI;
+module.exports = UserAPI;
