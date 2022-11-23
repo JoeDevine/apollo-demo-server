@@ -5,16 +5,15 @@ const { readFileSync } = require("fs");
 const typeDefs = gql(readFileSync("./schema.graphql", { encoding: "utf-8" }));
 const resolvers = require("./resolvers");
 const UserAPI = require("./datasources/datasource");
-const fs = require("fs");
 
-const port = 4001;
-const subgraphName = "demo";
+const port = 4002;
+const subgraphName = "user";
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({ typeDefs, resolvers }),
   dataSources: () => {
     return {
-      demoAPI: new DemoAPI(),
+      demoAPI: new UserAPI(),
     };
   },
   context: async ({ req }) => {
