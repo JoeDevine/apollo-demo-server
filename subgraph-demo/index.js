@@ -1,21 +1,17 @@
 const { ApolloServer, AuthenticationError, gql } = require("apollo-server");
-// const {
-//   ApolloServerPluginUsageReportingDisabled,
-// } = require("apollo-server-core");
-
 const { buildSubgraphSchema } = require("@apollo/subgraph");
 const { readFileSync } = require("fs");
 
 const typeDefs = gql(readFileSync("./schema.graphql", { encoding: "utf-8" }));
 const resolvers = require("./resolvers");
 const DemoAPI = require("./datasources/datasource");
+const fs = require("fs");
 
 const port = 4001;
 const subgraphName = "demo";
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({ typeDefs, resolvers }),
-  // plugins: [ApolloServerPluginUsageReportingDisabled()],
   dataSources: () => {
     return {
       demoAPI: new DemoAPI(),
