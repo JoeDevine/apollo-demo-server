@@ -19,7 +19,7 @@ jobs:
 
     defaults:
       run:
-        working-directory: ./subgraph-user
+        working-directory: subgraph-user
 
     strategy:
       matrix:
