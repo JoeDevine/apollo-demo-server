@@ -23,7 +23,7 @@ jobs:
 
     steps:
       - name: Check working directory
-        run: ls -la
+        run: ls -la ..
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
