@@ -6,7 +6,6 @@ on:
       - main
     paths:
       - "subgraph-demo/**"
-  workflow_dispatch:
 
 jobs:
   test:
