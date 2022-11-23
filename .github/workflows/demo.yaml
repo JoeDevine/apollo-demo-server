@@ -13,8 +13,10 @@ jobs:
     timeout-minutes: 5
 
     steps:
+      - name: Checkout Repo
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
+      - uses: actions/setup-node@v5
+        run: echo "Running project setup with npm version $(npm -v)"
         with:
           node-version: 18
 
