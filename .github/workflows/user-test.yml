@@ -17,16 +17,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    defaults:
+      run:
+        working-directory: ./subgraph-user
+
     strategy:
       matrix:
         node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v3
-      - name: Change to Sub directory
-        run: cd subgraph-user
       - name: Use Node.js ${{ matrix.node-version }}
-        run: pwd
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
