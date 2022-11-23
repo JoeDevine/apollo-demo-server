@@ -1,3 +1,5 @@
+[![Deploy Demo Subgraph](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/demo.yaml/badge.svg)](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/demo.yaml)
+
 # Apollo Demo Server
 
 ## Start the Subgraph
