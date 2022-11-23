@@ -26,10 +26,11 @@ jobs:
         node-version: [18.x]
 
     steps:
+      - name: Check directory
+        run: pwd
       - uses: actions/checkout@v3
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
-        working-directory: ./subgraph-user
         with:
           node-version: ${{ matrix.node-version }}
           cache: "npm"
