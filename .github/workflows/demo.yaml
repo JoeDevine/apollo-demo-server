@@ -23,3 +23,6 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Run Additional checks
+        run: echo "Additional Checks"
