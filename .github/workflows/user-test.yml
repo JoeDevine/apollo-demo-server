@@ -26,6 +26,7 @@ jobs:
       - name: Change to Sub directory
         run: cd subgraph-user
       - name: Use Node.js ${{ matrix.node-version }}
+        run: pwd
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
