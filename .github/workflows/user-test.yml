@@ -32,6 +32,7 @@ jobs:
           cache: "npm"
 
   build:
+    needs: setup
     runs-on: ubuntu-latest
 
     defaults:
