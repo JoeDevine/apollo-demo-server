@@ -8,7 +8,8 @@
     "node": ">=14.0.0"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "test": "echo 'run tests here for subgraph'"
   },
   "nodemonConfig": {
     "ext": "*.js, *.graphql"
