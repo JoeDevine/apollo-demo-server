@@ -33,33 +33,9 @@ jobs:
       subgraph_name: subgraph-user
 
   publish:
-    name: Rover Subgraph Publish
     needs: deploy
-    runs-on: ubuntu-latest
-
-    defaults:
-      run:
-        working-directory: subgraph-user
-
-    strategy:
-      matrix:
-        node-version: [18.x]
-
-    env:
-      APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
-      APOLLO_GRAPH_REF: ${{ secrets.APOLLO_GRAPH_REF }}
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Check working directory
-        run: ls -la && pwd
-      - name: Install Rover
-        run: |
-          curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
-          echo "$HOME/.rover/bin" >> $GITHUB_PATH
-      - name: Rover Subgraph Publish
-        run: |
-          rover subgraph publish ${{ secrets.APOLLO_GRAPH_REF }} \
-            --name subgraph-user \
-            --routing-url http://localhost:4002/ \
-            --schema ./schema.graphql
+    uses: ./.github/workflows/check.yml
+    secrets: inherit
+    with:
+      subgraph_name: subgraph-user
+      routing_url: http://localhost:4002/
