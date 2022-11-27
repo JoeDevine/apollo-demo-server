@@ -60,6 +60,9 @@ jobs:
         node-version: [18.x]
 
     steps:
+      - uses: actions/checkout@v3
+      - name: Check working directory
+        run: ls -la && pwd
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
