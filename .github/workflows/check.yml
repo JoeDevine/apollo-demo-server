@@ -10,7 +10,7 @@ on:
     secrets:
       APOLLO_KEY:
         required: true
-      APOLLO_GRAPH_ID:
+      APOLLO_GRAPH_REF:
         required: true
 
 env:
