@@ -1,0 +1,38 @@
+name: Demo Subgraph CI
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - "subgraph-demo/**"
+  pull_request:
+    branches: ["main"]
+    paths:
+      - "subgraph-demo/**"
+
+jobs:
+  build:
+    uses: ./.github/workflows/_build.yml
+    with:
+      subgraph_name: subgraph-demo
+
+  check:
+    needs: setup
+    uses: ./.github/workflows/_check.yml
+    secrets: inherit
+    with:
+      subgraph_name: subgraph-demo
+
+  deploy:
+    needs: check
+    uses: ./.github/workflows/_deploy.yml
+    with:
+      subgraph_name: subgraph-demo
+
+  publish:
+    needs: deploy
+    uses: ./.github/workflows/_publish.yml
+    secrets: inherit
+    with:
+      subgraph_name: subgraph-demo
+      routing_url: http://localhost:4001/
