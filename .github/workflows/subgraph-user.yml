@@ -17,7 +17,7 @@ jobs:
       subgraph_name: subgraph-user
 
   check:
-    needs: setup
+    needs: build
     uses: ./.github/workflows/_check.yml
     secrets: inherit
     with:
