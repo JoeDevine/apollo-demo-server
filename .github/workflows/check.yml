@@ -1,0 +1,48 @@
+name: Subgraph Checks
+
+on:
+  workflow_call:
+    inputs:
+      subgraph_name:
+        description: Subgraph name in Studio
+        type: string
+        required: true
+    secrets:
+      APOLLO_KEY:
+        required: true
+      APOLLO_GRAPH_ID:
+        required: true
+
+env:
+  APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+
+jobs:
+  check:
+    needs: setup
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ${{ inputs.subgraph_name }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    env:
+      APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+      APOLLO_GRAPH_REF: ${{ secrets.APOLLO_GRAPH_REF }}
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check working directory
+        run: ls -la && pwd
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
+      - name: Rover Subgraph Check
+        run: |
+          rover subgraph check ${{ secrets.APOLLO_GRAPH_REF }} \
+            --name ${{ inputs.subgraph_name }} \
+            --schema ./schema.graphql
