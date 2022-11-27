@@ -15,26 +15,26 @@ on:
 
 jobs:
   setup:
-    uses: ./.github/workflows/build.yml
+    uses: ./.github/workflows/_build.yml
     with:
       subgraph_name: subgraph-user
 
   check:
     needs: setup
-    uses: ./.github/workflows/check.yml
+    uses: ./.github/workflows/_check.yml
     secrets: inherit
     with:
       subgraph_name: subgraph-user
 
   deploy:
     needs: check
-    uses: ./.github/workflows/deploy.yml
+    uses: ./.github/workflows/_deploy.yml
     with:
       subgraph_name: subgraph-user
 
   publish:
     needs: deploy
-    uses: ./.github/workflows/publish.yml
+    uses: ./.github/workflows/_publish.yml
     secrets: inherit
     with:
       subgraph_name: subgraph-user
