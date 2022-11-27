@@ -56,8 +56,6 @@ jobs:
         working-directory: subgraph-user
 
     steps:
-      - name: Checkout
-
       - name: Install Rover
         run: |
           curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
