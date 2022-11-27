@@ -108,12 +108,18 @@ jobs:
       matrix:
         node-version: [18.x]
 
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v3
+    env:
+      APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+      APOLLO_GRAPH_REF: ${{ secrets.APOLLO_GRAPH_REF }}
 
-      - name: Check Rover Install
-        run: rover -V
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check working directory
+        run: ls -la && pwd
+      - name: Install Rover
+        run: |
+          curl -sSL https://rover.apollo.dev/nix/v0.8.1 | sh
+          echo "$HOME/.rover/bin" >> $GITHUB_PATH
       - name: Rover Subgraph Publish
         run: |
           rover subgraph publish ${{ secrets.APOLLO_GRAPH_REF }} \
