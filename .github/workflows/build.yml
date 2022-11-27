@@ -1,0 +1,37 @@
+name: Build
+
+on:
+  workflow_call:
+    inputs:
+      subgraph_name:
+        description: Subgraph name in Studio
+        type: string
+        required: true
+
+jobs:
+  npm-build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18.x]
+    steps:
+      - name: Check working directory
+        run: ls -la
+      - uses: actions/checkout@v3
+  build:
+    needs: npm-build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{ inputs.subgraph_name }}
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check working directory
+        run: ls -la
+      - run: npm ci
+      - run: npm run build --if-present
