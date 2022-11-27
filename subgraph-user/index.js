@@ -7,7 +7,7 @@ const resolvers = require("./resolvers");
 const UserAPI = require("./datasources/datasource");
 
 const port = 4002;
-const subgraphName = "user demo";
+const subgraphName = "user";
 o;
 const server = new ApolloServer({
   schema: buildSubgraphSchema({ typeDefs, resolvers }),

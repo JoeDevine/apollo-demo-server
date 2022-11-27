@@ -18,7 +18,6 @@ env:
 
 jobs:
   check:
-    needs: setup
     runs-on: ubuntu-latest
 
     defaults:
