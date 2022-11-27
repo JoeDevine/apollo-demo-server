@@ -59,6 +59,10 @@ jobs:
       matrix:
         node-version: [18.x]
 
+    env:
+      APOLLO_KEY: ${{ secrets.APOLLO_KEY }}
+      APOLLO_GRAPH_REF: ${{ secrets.APOLLO_GRAPH_REF }}
+
     steps:
       - uses: actions/checkout@v3
       - name: Check working directory
