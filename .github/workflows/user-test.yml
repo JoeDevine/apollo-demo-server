@@ -34,7 +34,7 @@ jobs:
 
   publish:
     needs: deploy
-    uses: ./.github/workflows/check.yml
+    uses: ./.github/workflows/publish.yml
     secrets: inherit
     with:
       subgraph_name: subgraph-user
