@@ -15,10 +15,17 @@ directive @join__type(graph: join__Graph!, key: join__FieldSet, extension: Boole
 
 directive @link(url: String, as: String, for: link__Purpose, import: [link__Import]) repeatable on SCHEMA
 
+type another
+  @join__type(graph: SUBGRAPHDEMO)
+{
+  stuff: String
+}
+
 scalar join__FieldSet
 
 enum join__Graph {
   SUBGRAPHDEMO @join__graph(name: "subgraphdemo", url: "http://localhost:4001/")
+  SUBGRAPHUSER @join__graph(name: "subgraphuser", url: "http://localhost:4002/")
 }
 
 scalar link__Import
@@ -37,6 +44,24 @@ enum link__Purpose {
 
 type Query
   @join__type(graph: SUBGRAPHDEMO)
+  @join__type(graph: SUBGRAPHUSER)
 {
-  example: String
+  example: String @join__field(graph: SUBGRAPHDEMO)
+  userDetails: User @join__field(graph: SUBGRAPHUSER)
+}
+
+type thing
+  @join__type(graph: SUBGRAPHDEMO, key: "id")
+{
+  id: ID!
+  name: String!
+  description: String!
+}
+
+type User
+  @join__type(graph: SUBGRAPHUSER, key: "id")
+{
+  id: ID!
+  name: String!
+  Surname: String!
 }
