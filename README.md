@@ -25,7 +25,7 @@ npm start
 
 ### Compose supergraph locally
 
-This repo is built run standalone and therefore is built on the assumption that Supergraph composition is happening locally. This can be achieved by running the following in the root directory. Note that the output file and config file reference can be updated in the underlying command defined in the package.json
+This repo is built to run standalone and therefore is built on the assumption that Supergraph composition is happening locally. This can be achieved by running the following in the root directory. Note that the output file and config file reference can be updated in the underlying command defined in the `package.json`.
 
 ```
 npm run compose
@@ -33,7 +33,7 @@ npm run compose
 
 ## Start the router locally
 
-This project is built to leverage running a local binary instance of the Router. This can be installed and then run using the following commands in the root directory:
+This project is built to leverage a locally running binary instance of the Router. This can be installed and then run using the following commands in the root directory:
 
 ```
 # From project root
@@ -41,13 +41,13 @@ This project is built to leverage running a local binary instance of the Router.
 # Will install the latest available version for Mac, the underlying request can be modified in package.json
 npm run router:install
 
-# This will run the installed local binary on the assumption a local composed supergraph has been created
+# This will run the installed local binary on the assumption a locally composed supergraph has been created
 npm run router:local
 ```
 
 ## Run Prometheus
 
-This repo contains a working example of collecting metrics in Prometheus locally. There are some nuances to how prometheus collects metrics and how Router makes these metrics available. Router doesn't connect to Prometheus directly, instead it exposes the appropriately formatted metrics for prometheus on a specific port. Below is the config for making this possible within the `router-config.yaml` file in the root of the repo:
+This repo contains a working example of collecting metrics with Prometheus. There are some nuances to how prometheus collects metrics and how Router makes these metrics available. Router doesn't connect to Prometheus directly, instead it exposes the appropriately formatted metrics for prometheus on a specific port. Below is the config for making this possible within the `router-config.yaml` file in the root of the repo:
 
 ```
 telemetry:
@@ -68,19 +68,19 @@ scrape_configs:
 
 Once this is in place, you should be able to navigate to the Prometheus GUI (i.e. `http://localhost:9090/graph`) and see the metrics from Router being pulled through.
 
-## Graphana Setup
+## Grafana Setup
 
 Once you have Prometheus running and collecting metrics from Router successfully, Grafana is easily configured as it has native support for Prometheus. The key step for integrating with Prometheus is adding it as a data source as shown below:
 
 ![image](https://user-images.githubusercontent.com/10652753/214591328-87e950c7-b7b7-48a0-98d2-82fda06952bd.png)
 
-_Note_: Be careful to target the running instance of Prometheus and not the exposed metrics from Router directly.
+_Note_: Be careful to target the running instance of Prometheus (Port: 9090) and not the exposed metrics from Router directly (Port: 9095).
 
 Once this has been configured you should be able to build custom dashboards as required by leveraging the assigned data source.
 
 ## Start the Open Telemetry Collector
 
-This repo also has an example of how to collect Open Telemtry data from Router. the first step is install a local instance of the Open Telemetry Collector by using the following commands:
+This repo also has an example of how to collect Open Telemetry data from Router. the first step is to install a local instance of the Open Telemetry Collector by using the following commands:
 
 ```
 # Download Open telemetry Collector for Mac M1
@@ -91,7 +91,7 @@ tar -xvf otelcol_0.63.0_darwin_arm64.tar.gz
 npm run otlp:start
 ```
 
-The Open Telemtry Collector is configure via the `otlp-config.yaml` file in the root of the directory. Open Telemetry Collector has a huge array of available integrations and capabilities, for full configuration details visit the [Open Telemetry Documentation](https://opentelemetry.io/docs/collector/).
+The Open Telemetry Collector is configured via the `otlp-config.yaml` file in the root of the directory. Open Telemetry Collector has a huge array of available integrations and capabilities, for full configuration details visit the [Open Telemetry Documentation](https://opentelemetry.io/docs/collector/).
 
 In order to check the collector has been configured correctly you can query the output using the following endpoint:
 
@@ -101,7 +101,7 @@ http://localhost:8888/metrics
 
 ## Start the gRPC Server to consume output of Open Telemetry Collector
 
-One usecase demonstrated in this repo is running a custom service that exposes a gRPC endpoint for recieving Open Telemetry Data from the Open Telemetry Collector. This service currently takes the output that is periodically sent and writes it to a file locally with the format `TIMESTAMP-telemetry.json`. You can run this service by running the following commands:
+One use case demonstrated in this repo is running a custom service that exposes a gRPC endpoint for receiving Open Telemetry Data from the Open Telemetry Collector. This service currently takes the output that is periodically sent from the Open Telemetry Collector and writes it to a file locally with the format `TIMESTAMP-telemetry.json`. You can run this service by running the following commands:
 
 ```
 cd grpc-receiver
