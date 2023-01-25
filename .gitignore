@@ -10,3 +10,5 @@ logs-*
 **/.env
 **/*-telemetry.json
 hive.json
+grafana-*
+router_old

@@ -1,13 +1,13 @@
-const { ApolloServer, AuthenticationError, gql } = require("apollo-server");
-const { buildSubgraphSchema } = require("@apollo/subgraph");
-const { readFileSync } = require("fs");
+const { ApolloServer, AuthenticationError, gql } = require('apollo-server');
+const { buildSubgraphSchema } = require('@apollo/subgraph');
+const { readFileSync } = require('fs');
 
-const typeDefs = gql(readFileSync("./schema.graphql", { encoding: "utf-8" }));
-const resolvers = require("./resolvers");
-const UserAPI = require("./datasources/datasource");
+const typeDefs = gql(readFileSync('./schema.graphql', { encoding: 'utf-8' }));
+const resolvers = require('./resolvers');
+const UserAPI = require('./datasources/datasource');
 
 const port = 4002;
-const subgraphName = "user";
+const subgraphName = 'user';
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({ typeDefs, resolvers }),
@@ -16,14 +16,14 @@ const server = new ApolloServer({
       demoAPI: new UserAPI(),
     };
   },
-  context: async ({ req }) => {
-    const token = req.headers.authorization || "";
-    const userId = token.split(" ")[1]; // get the user name after 'Bearer '
-    if (!userId)
-      throw new AuthenticationError(
-        "Error: no userId present, add Authorisation Header to request"
-      ); // Demo auth error if no userId present
-  },
+  // context: async ({ req }) => {
+  //   const token = req.headers.authorization || "";
+  //   const userId = token.split(" ")[1]; // get the user name after 'Bearer '
+  //   if (!userId)
+  //     throw new AuthenticationError(
+  //       "Error: no userId present, add Authorisation Header to request"
+  //     ); // Demo auth error if no userId present
+  // },
 });
 
 server

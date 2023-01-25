@@ -2,17 +2,43 @@
 
 # Apollo Demo Server
 
-## Start the Subgraph
+## Overview
+
+This repo is built as a sandbox example repository for demonstrating features and capabilities of the Apollo eco-system, primarily focussed on the capabilities of the Apollo Router.
+
+## Start the Subgraphs
+
+There are currently 2 different example subgraphs built out with dummy responses (User and Demo) these can be started by using the following commands:
 
 ```
 cd subgraph-demo
 npm start
 ```
 
+```
+cd subgraph-user
+npm start
+```
+
+### Create supergraph locally
+
+This repo is built run standalone and therefore is built on the assumption that Supergraph composition is happening locally. This can be achieved by running the following in the root directory. Note that the output file and config file reference can be updated in the underlying command defined in the package.json
+
+```
+npm run compose
+```
+
 ## Start the router locally
+
+This project is built to leverage running a local binary instance of the Router. This can be installed and then run using the following commands in the root directory:
 
 ```
 # From project root
+
+# Will install the latest available version for Mac, the underlying request can be modified in package.json
+npm run router:install
+
+# This will run the installed local binary on the assumption a local composed supergraph has been created
 npm run router:local
 ```
 
