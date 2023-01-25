@@ -1,4 +1,5 @@
-[![Deploy Demo Subgraph](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/demo.yaml/badge.svg)](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/demo.yaml)
+[![Deploy Demo Subgraph](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/subgraph-demo.yaml/badge.svg)](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/subgraph-demo.yaml)
+[![Deploy User Subgraph](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/subgraph-user.yaml/badge.svg)](https://github.com/JoeDevine/apollo-demo-server/actions/workflows/subgraph-user.yaml)
 
 # Apollo Demo Server
 
