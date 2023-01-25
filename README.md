@@ -3,8 +3,6 @@
 
 # Apollo Demo Server
 
-## Overview
-
 This repo is built as a sandbox example repository for demonstrating features and capabilities of the Apollo eco-system, primarily focussed on the capabilities of the Apollo Router. Below is an overview of the project architecture and each of the different services with it's associated port.
 
 ![demoRepo](https://user-images.githubusercontent.com/10652753/214587816-b753169a-41e1-4283-967c-7a0fba3646cd.png)
