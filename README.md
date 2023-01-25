@@ -71,6 +71,8 @@ Once this is in place, you should be able to navigate to the Prometheus GUI (i.e
 
 Once you have Prometheus running and collecting metrics from Router successfully, Grafana is easily configured as it has native support for Prometheus. The key step for integrating with Prometheus is adding it as a Datasource as shown below:
 
+![image](https://user-images.githubusercontent.com/10652753/214591328-87e950c7-b7b7-48a0-98d2-82fda06952bd.png)
+
 Note: Be careful to target the running instance of Prometheus and not the exposed metrics from Router directly.
 
 Once this has been configured you should be able to build custom dashboards as required by leveraging the assigned datasource.
