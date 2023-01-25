@@ -1,4 +1,4 @@
-name: Deploy Subgraph Server
+name: _Deploy
 
 on:
   workflow_call:

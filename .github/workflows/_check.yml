@@ -1,4 +1,4 @@
-name: Subgraph Checks
+name: _Check
 
 on:
   workflow_call:

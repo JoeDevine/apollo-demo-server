@@ -1,4 +1,4 @@
-name: Subgraph Publish to Studio
+name: _Publish
 
 on:
   workflow_call:
