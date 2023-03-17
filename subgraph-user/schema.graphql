@@ -1,12 +1,22 @@
 extend schema
-  @link(url: "https://specs.apollo.dev/federation/v2.0", import: ["@key"])
+  @link(
+    url: "https://specs.apollo.dev/federation/v2.3"
+    import: ["@key", "@interfaceObject"]
+  )
 
 type Query {
   userDetails: User
+  itemDetails: Item
 }
 
 type User @key(fields: "id") {
   id: ID!
   name: String!
   Surname: String!
+}
+
+type Item @key(fields: "id") @interfaceObject {
+  id: ID!
+  size: Int
+  weight: Int
 }
