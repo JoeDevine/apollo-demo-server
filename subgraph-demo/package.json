@@ -18,7 +18,7 @@
   "license": "ISC",
   "dependencies": {
     "@apollo/server": "^4.5.0",
-    "@apollo/subgraph": "^2.0.5",
+    "@apollo/subgraph": "^2.4.0",
     "apollo-datasource": "^3.3.2",
     "apollo-datasource-rest": "^3.6.1",
     "apollo-server-core": "^3.11.1",

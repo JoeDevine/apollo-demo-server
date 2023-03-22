@@ -9,10 +9,8 @@ const resolvers = require('./resolvers');
 const UserAPI = require('./datasources/datasource');
 
 const port = 4002;
-const subgraphName = 'user';
 
 const server = new ApolloServer({
-  subgraph: { name: 'user', port: 4002 },
   schema: buildSubgraphSchema({ typeDefs, resolvers }),
   dataSources: () => {
     return {
@@ -21,7 +19,10 @@ const server = new ApolloServer({
   },
 });
 
-// Note the top-level await!
-startStandaloneServer(server).then(({ url }) => {
+startStandaloneServer(server, {
+  listen: { port },
+}).then(({ url }) => {
   console.log(`🚀  Server ready at ${url}`);
+}).catch((err) => {
+  console.error(err);
 });
