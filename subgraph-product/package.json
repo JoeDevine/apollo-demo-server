@@ -1,7 +1,7 @@
 {
   "name": "demo-subgraph",
   "version": "1.0.0",
-  "description": "A demo Subgraph built for example purposes",
+  "description": "A product Subgraph built for example purposes",
   "main": "index.js",
   "engines": {
     "npm": ">=6.0.0",

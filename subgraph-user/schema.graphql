@@ -5,14 +5,15 @@ extend schema
   )
 
 type Query {
-  userDetails: User
-  itemDetails: Item
+  user: User
+  item: Item
 }
 
 type User @key(fields: "id") {
   id: ID!
   name: String!
-  Surname: String!
+  surname: String!
+  items: [Item]
 }
 
 type Item @key(fields: "id") @interfaceObject {
