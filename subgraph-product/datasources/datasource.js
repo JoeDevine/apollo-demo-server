@@ -18,12 +18,7 @@ class ProductAPI extends RESTDataSource {
   }
 
   getProduct(id) {
-    console.log('in get product');
-    return productData.find((product) => {
-      console.log('product', product);
-      console.log('id', id);
-      return product.id === id;
-    });
+    return productData.find((product) => product.id === id);
   }
 }
 
