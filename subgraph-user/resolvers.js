@@ -3,19 +3,22 @@ const authErrMessage = '*** you must be logged in ***';
 
 const resolvers = {
   Query: {
-    userDetails: () => {
-      return {
-        id: '1',
-        name: 'Joe',
-        Surname: 'Bloggs',
-      };
+    allItems: (_, __, context) => {
+      return context.dataSources.userAPI.getItems();
     },
-    itemDetails: () => {
-      return {
-        id: '123',
-        size: 4,
-        weight: 3,
-      };
+    items: (_, args, context) => {
+      return context.dataSources.userAPI.getItem(args.id);
+    },
+  },
+  Item: {
+    __resolveReference(reference, context) {
+      console.log('Item reference -> ', reference, context);
+      console.log('context.dataSources.userAPI', context.dataSources.userAPI);
+      console.log(
+        'result from item ->',
+        context.dataSources.userAPI.getItem(reference.id)
+      );
+      return context.dataSources.userAPI.getItem(reference.id);
     },
   },
 };

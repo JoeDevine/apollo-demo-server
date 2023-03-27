@@ -12,17 +12,21 @@ const port = 4002;
 
 const server = new ApolloServer({
   schema: buildSubgraphSchema({ typeDefs, resolvers }),
-  dataSources: () => {
-    return {
-      demoAPI: new UserAPI(),
-    };
-  },
 });
 
 startStandaloneServer(server, {
   listen: { port },
-}).then(({ url }) => {
-  console.log(`🚀  Server ready at ${url}`);
-}).catch((err) => {
-  console.error(err);
-});
+  context: async () => {
+    return {
+      dataSources: {
+        sserAPI: new UserAPI(),
+      },
+    };
+  },
+})
+  .then(({ url }) => {
+    console.log(`🚀  Server ready at ${url}`);
+  })
+  .catch((err) => {
+    console.error(err);
+  });

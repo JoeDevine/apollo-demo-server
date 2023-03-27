@@ -9,7 +9,7 @@ type Query {
   item: Item
 }
 
-type User @key(fields: "id") {
+type User {
   id: ID!
   name: String!
   surname: String!

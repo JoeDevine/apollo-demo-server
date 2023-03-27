@@ -9,14 +9,12 @@ const resolvers = {
   },
   Product: {
     cost(product) {
-      console.log('Product ->', product);
+      console.log('Cost Product ->', product);
       return product.size * product.weight;
     },
-    __resolveReference(reference) {
-      debug(`resolving product reference '${JSON.stringify(reference)}'`);
-      return {
-        id: '321',
-      };
+    __resolveReference(reference, context) {
+      console.log('Product reference -> ', reference, context.dataSources);
+      return context.dataSources.productAPI.getProduct(reference.id);
     },
   },
 };

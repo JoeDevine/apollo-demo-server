@@ -11,8 +11,6 @@ type Query {
 
 interface Item @key(fields: "id") {
   id: ID!
-  size: Int
-  weight: Int
 }
 
 type Product implements Item @key(fields: "id") {
