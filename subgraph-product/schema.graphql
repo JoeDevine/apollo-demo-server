@@ -1,12 +1,13 @@
-extend schema
-  @link(
-    url: "https://specs.apollo.dev/federation/v2.3"
-    import: ["@key", "@external", "@requires"]
-  )
-
 type Query {
+  users: [User]
+  userById(key: ID!): User
   allProducts: [Product]
   product(id: ID!): Product
+}
+
+type User @key(fields: "id") {
+  id: ID!
+  products: [Item]
 }
 
 interface Item @key(fields: "id") {

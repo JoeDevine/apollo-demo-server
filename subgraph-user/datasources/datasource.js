@@ -1,25 +1,39 @@
-const { RESTDataSource } = require('apollo-datasource-rest');
+const { RESTDataSource } = require("apollo-datasource-rest");
 
 const itemData = [
-  { id: '320', size: 2, weight: 3 },
-  { id: '321', size: 2, weight: 3 },
-  { id: '322', size: 2, weight: 3 },
+  { id: "320", size: 2, weight: 3 },
+  { id: "321", size: 2, weight: 3 },
+  { id: "322", size: 2, weight: 3 }
+];
+
+const userData = [
+  { id: "1", name: "John", surname: "Ward", items: itemData },
+  { id: "2", name: "Bob", surname: "Stevens", items: itemData },
+  { id: "3", name: "Kevin", surname: "Richards", items: itemData }
 ];
 
 // Example Data Source Logic
 class UserAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = 'http://localhost:4012/';
+    this.baseURL = "http://localhost:4012/";
   }
   getUser(id) {
     return this.get(`user/${id}`);
   }
 
+  getUsers() {
+    return userData;
+  }
+
+  getuserById(id) {
+    return userData.find((user) => user.id === id);
+  }
+
   getUserData() {
     return {
       id: 123,
-      data: 'Test data for demo purposes',
+      data: "Test data for demo purposes"
     };
   }
 

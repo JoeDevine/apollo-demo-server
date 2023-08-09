@@ -1,10 +1,10 @@
 federation_version: 2
 subgraphs:
-  subgraph-demo:
+  subgraph-product:
     routing_url: http://localhost:4001/
     schema:
-      file: './subgraph-demo/schema.graphql'
+      file: "./subgraph-product/schema.graphql"
   subgraph-user:
     routing_url: http://localhost:4002/
     schema:
-      file: './subgraph-user/schema.graphql'
+      file: "./subgraph-user/schema.graphql"

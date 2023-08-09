@@ -5,11 +5,12 @@ extend schema
   )
 
 type Query {
-  user: User
+  users: [User]
+  userById(key: ID!): User
   item: Item
 }
 
-type User {
+type User @key(fields: "id") {
   id: ID!
   name: String!
   surname: String!

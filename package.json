@@ -6,6 +6,7 @@
   "scripts": {
     "start": "nodemon index.js",
     "compose": "rover supergraph compose --config ./supergraph-config.yaml > supergraph.graphql",
+    "compose:marel": "rover supergraph compose --config ./supergraph-marel.yaml > supergraphmarel.graphql",
     "publish:subgraph-product": "rover subgraph publish Demo-Supergraph@current --name subgraph-product --schema ./subgraph-product/schema.graphql --routing-url http://localhost:4001/",
     "publish:subgraph-user": "rover subgraph publish Demo-Supergraph@current --name subgraph-user --schema ./subgraph-user/schema.graphql --routing-url http://localhost:4002/",
     "publish:all": "npm run publish:subgraph-product && npm run publish:subgraph-user",
