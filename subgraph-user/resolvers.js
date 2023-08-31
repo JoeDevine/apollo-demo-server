@@ -14,6 +14,12 @@ const resolvers = {
     },
     userById: (_, args, context) => {
       return context.dataSources.userAPI.getuserById(args.id);
+    },
+    sites: (_, __, context) => {
+      return context.dataSources.productAPI.getSites();
+    },
+    siteById: (_, args, context) => {
+      return context.dataSources.productAPI.getSitesById(args.id);
     }
   },
   Item: {

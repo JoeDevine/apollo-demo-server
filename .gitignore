@@ -12,3 +12,4 @@ logs-*
 hive.json
 grafana-*
 router_old
+.env

@@ -8,6 +8,8 @@ type Query {
   users: [User]
   userById(key: ID!): User
   item: Item
+  sites: [Site]
+  siteById(key: UUID!): [Site]
 }
 
 type User @key(fields: "id") {
@@ -21,4 +23,10 @@ type Item @key(fields: "id") @interfaceObject {
   id: ID!
   size: Int
   weight: Int
+}
+
+type Site @key(fields: "Id") {
+  Id: UUID!
+  name: String
+  landingDate: DateTime!
 }

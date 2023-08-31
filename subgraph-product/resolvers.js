@@ -6,11 +6,17 @@ const resolvers = {
     product: (_, args, context) => {
       return context.dataSources.productAPI.getProduct(args.id);
     },
-    users: (_, args, context) => {
+    users: (_, __, context) => {
       return context.dataSources.productAPI.getUsers();
     },
     userById: (_, args, context) => {
       return context.dataSources.productAPI.getuserById(args.id);
+    },
+    sites: (_, __, context) => {
+      return context.dataSources.productAPI.getSites();
+    },
+    siteById: (_, args, context) => {
+      return context.dataSources.productAPI.getSitesById(args.id);
     }
   },
   Product: {

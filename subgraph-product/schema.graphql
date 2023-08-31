@@ -3,6 +3,8 @@ type Query {
   userById(key: ID!): User
   allProducts: [Product]
   product(id: ID!): Product
+  sites: [Site]
+  siteById(key: UUID!): [Site]
 }
 
 type User @key(fields: "id") {
@@ -19,4 +21,10 @@ type Product implements Item @key(fields: "id") {
   size: Int @external
   weight: Int @external
   cost: String @requires(fields: "size weight")
+}
+
+type Site @key(fields: "Id") {
+  Id: UUID!
+  name: String
+  customer: String
 }
