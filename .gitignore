@@ -13,3 +13,4 @@ hive.json
 grafana-*
 router_old
 .env
+.DS_Store
