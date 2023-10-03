@@ -26,6 +26,12 @@ const resolvers = {
     __resolveReference(reference, context) {
       return context.dataSources.userAPI.getItem(reference.id);
     }
+  },
+  Site: {
+    __resolveReference(reference, context) {
+      console.log("Site reference -> ", reference, context.dataSources);
+      return context.dataSources.userAPI.getSitesById(reference.id);
+    }
   }
 };
 

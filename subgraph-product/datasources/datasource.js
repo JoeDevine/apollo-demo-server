@@ -9,9 +9,9 @@ const userData = [
 ];
 
 const sitesData = [
-  { id: 0, name: foo, customer: "customer 1" },
-  { id: 1, name: bar, customer: "customer 2" },
-  { id: 2, name: baz, customer: "customer 3" }
+  { id: "0", name: "foo", customer: "customer 1" },
+  { id: "1", name: "bar", customer: "customer 2" },
+  { id: "2", name: "baz", customer: "customer 3" }
 ];
 
 // Example Data Source Logic
@@ -42,10 +42,13 @@ class ProductAPI extends RESTDataSource {
   }
 
   getSites() {
+    console.log("in product getSites()");
     return sitesData;
   }
 
   getSitesById(id) {
+    console.log("in product getSitesById()", id);
+    console.log(sitesData.find((site) => site.id === id));
     return sitesData.find((site) => site.id === id);
   }
 }

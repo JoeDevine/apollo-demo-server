@@ -16,7 +16,12 @@ const resolvers = {
       return context.dataSources.productAPI.getSites();
     },
     siteById: (_, args, context) => {
-      return context.dataSources.productAPI.getSitesById(args.id);
+      console.log("args", args);
+      console.log(
+        "resolver ->",
+        context.dataSources.productAPI.getSitesById(args.key)
+      );
+      return context.dataSources.productAPI.getSitesById(args.key);
     }
   },
   Product: {
@@ -27,6 +32,12 @@ const resolvers = {
     __resolveReference(reference, context) {
       console.log("Product reference -> ", reference, context.dataSources);
       return context.dataSources.productAPI.getProduct(reference.id);
+    }
+  },
+  Site: {
+    __resolveReference(reference, context) {
+      console.log("Site reference -> ", reference, context.dataSources);
+      return context.dataSources.productAPI.getSitesById(reference.id);
     }
   }
 };
