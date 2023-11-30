@@ -1,9 +1,9 @@
 const resolvers = {
   Query: {
-    allProducts: (_, __, context) => {
+    products: (_, __, context) => {
       return context.dataSources.productAPI.getProducts();
     },
-    product: (_, args, context) => {
+    productById: (_, args, context) => {
       return context.dataSources.productAPI.getProduct(args.id);
     },
     users: (_, __, context) => {
@@ -11,17 +11,6 @@ const resolvers = {
     },
     userById: (_, args, context) => {
       return context.dataSources.productAPI.getuserById(args.id);
-    },
-    sites: (_, __, context) => {
-      return context.dataSources.productAPI.getSites();
-    },
-    siteById: (_, args, context) => {
-      console.log("args", args);
-      console.log(
-        "resolver ->",
-        context.dataSources.productAPI.getSitesById(args.key)
-      );
-      return context.dataSources.productAPI.getSitesById(args.key);
     }
   },
   Product: {
@@ -32,12 +21,6 @@ const resolvers = {
     __resolveReference(reference, context) {
       console.log("Product reference -> ", reference, context.dataSources);
       return context.dataSources.productAPI.getProduct(reference.id);
-    }
-  },
-  Site: {
-    __resolveReference(reference, context) {
-      console.log("Site reference -> ", reference, context.dataSources);
-      return context.dataSources.productAPI.getSitesById(reference.id);
     }
   }
 };

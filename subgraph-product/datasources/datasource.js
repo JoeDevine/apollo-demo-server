@@ -2,17 +2,7 @@ const { RESTDataSource } = require("apollo-datasource-rest");
 
 const productData = [{ id: "320" }, { id: "321" }, { id: "322" }];
 
-const userData = [
-  { id: "1", products: productData },
-  { id: "2", products: productData },
-  { id: "3", products: productData }
-];
-
-const sitesData = [
-  { id: "0", name: "foo", customer: "customer 1" },
-  { id: "1", name: "bar", customer: "customer 2" },
-  { id: "2", name: "baz", customer: "customer 3" }
-];
+const userData = [{ id: "1" }, { id: "2" }, { id: "3" }];
 
 // Example Data Source Logic
 class ProductAPI extends RESTDataSource {
@@ -28,28 +18,12 @@ class ProductAPI extends RESTDataSource {
     return userData.find((user) => user.id === id);
   }
 
-  getData(id) {
-    return this.get(`data/${id}`);
-  }
-
   getProducts() {
-    console.log("in get products");
     return productData;
   }
 
   getProduct(id) {
     return productData.find((product) => product.id === id);
-  }
-
-  getSites() {
-    console.log("in product getSites()");
-    return sitesData;
-  }
-
-  getSitesById(id) {
-    console.log("in product getSitesById()", id);
-    console.log(sitesData.find((site) => site.id === id));
-    return sitesData.find((site) => site.id === id);
   }
 }
 

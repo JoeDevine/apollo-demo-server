@@ -12,11 +12,6 @@ const userData = [
   { id: "3", name: "Kevin", surname: "Richards", items: itemData }
 ];
 
-const sitesData = [
-  { id: "1", name: "bar", landingDate: "2023-07-31T09:54:07.466Z" },
-  { id: "2", name: "baz", landingDate: "2023-08-28T09:54:07.466Z" }
-];
-
 // Example Data Source Logic
 class UserAPI extends RESTDataSource {
   constructor() {
@@ -31,7 +26,7 @@ class UserAPI extends RESTDataSource {
     return userData;
   }
 
-  getuserById(id) {
+  getUserById(id) {
     return userData.find((user) => user.id === id);
   }
 
@@ -48,16 +43,6 @@ class UserAPI extends RESTDataSource {
 
   getItems() {
     return itemData;
-  }
-
-  getSites() {
-    console.log("in user getSites()");
-    return sitesData;
-  }
-
-  getSitesById(id) {
-    console.log("in user getSitesById()", id);
-    return sitesData.find((site) => site.id === id);
   }
 }
 

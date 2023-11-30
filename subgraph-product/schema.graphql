@@ -1,21 +1,16 @@
 extend schema
   @link(
     url: "https://specs.apollo.dev/federation/v2.3"
-    import: ["@key", "@external", "@requires", "@shareable"]
+    import: ["@key", "@external", "@requires", "@shareable", "@tag"]
   )
 
 type Query {
-  users: [User]
-  userById(key: ID!): User
-  allProducts: [Product]
-  product(id: ID!): Product
-  sites: [Site]
-  siteById(key: ID!): Site
+  products: [Product]
+  productById(id: ID!): Product
 }
 
 type User @key(fields: "id") {
   id: ID!
-  products: [Item]
 }
 
 interface Item @key(fields: "id") {
@@ -27,10 +22,4 @@ type Product implements Item @key(fields: "id") {
   size: Int @external
   weight: Int @external
   cost: String @requires(fields: "size weight")
-}
-
-type Site @key(fields: "Id") {
-  Id: ID
-  name: String @shareable
-  customer: String
 }

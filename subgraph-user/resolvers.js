@@ -9,28 +9,17 @@ const resolvers = {
     items: (_, args, context) => {
       return context.dataSources.userAPI.getItem(args.id);
     },
-    users: (_, args, context) => {
+    users: (_, __, context) => {
       return context.dataSources.userAPI.getUsers();
     },
     userById: (_, args, context) => {
-      return context.dataSources.userAPI.getuserById(args.id);
-    },
-    sites: (_, __, context) => {
-      return context.dataSources.productAPI.getSites();
-    },
-    siteById: (_, args, context) => {
-      return context.dataSources.productAPI.getSitesById(args.id);
+      console.log("in userById", args.id);
+      return context.dataSources.userAPI.getUserById(args.id);
     }
   },
   Item: {
     __resolveReference(reference, context) {
       return context.dataSources.userAPI.getItem(reference.id);
-    }
-  },
-  Site: {
-    __resolveReference(reference, context) {
-      console.log("Site reference -> ", reference, context.dataSources);
-      return context.dataSources.userAPI.getSitesById(reference.id);
     }
   }
 };
