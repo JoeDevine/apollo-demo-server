@@ -13,7 +13,6 @@ const resolvers = {
       return context.dataSources.userAPI.getUsers();
     },
     userById: (_, args, context) => {
-      console.log("in userById", args.id);
       return context.dataSources.userAPI.getUserById(args.id);
     }
   },

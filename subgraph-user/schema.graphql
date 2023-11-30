@@ -5,7 +5,6 @@ extend schema
   )
 
 type Query {
-  item: Item
   users: [User]
   userById(id: ID!): User
 }
