@@ -14,12 +14,22 @@ const userData = [
 
 // Example Data Source Logic
 class UserAPI extends RESTDataSource {
-  constructor() {
+  constructor(config) {
     super();
-    this.baseURL = "http://localhost:4012/";
+    this.baseURL = "https://api.coindesk.com/";
+    this.initialize(config);
   }
-  getUser(id) {
-    return this.get(`user/${id}`);
+
+  requestDeduplicationPolicyFor(url, request) {
+    const cacheKey = this.cacheKeyFor(url, request);
+    return { policy: "do-not-deduplicate" };
+  }
+
+  async testCache() {
+    console.log("In test method");
+    return this.get("v1/bpi/currentprice.json", {
+      cacheOptions: { ttl: 0 }
+    });
   }
 
   getUsers() {

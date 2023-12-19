@@ -14,6 +14,10 @@ const resolvers = {
     },
     userById: (_, args, context) => {
       return context.dataSources.userAPI.getUserById(args.id);
+    },
+    testCache: async (_, __, context) => {
+      const testResult = context.dataSources.userAPI.testCache();
+      return { result: testResult };
     }
   },
   Item: {

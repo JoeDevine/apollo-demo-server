@@ -54,6 +54,7 @@ type Product implements Item
   @join__type(graph: SUBGRAPH_PRODUCT, key: "id")
 {
   id: ID!
+  name: String
   size: Int @join__field(graph: SUBGRAPH_PRODUCT, external: true)
   weight: Int @join__field(graph: SUBGRAPH_PRODUCT, external: true)
   cost: String @join__field(graph: SUBGRAPH_PRODUCT, requires: "size weight")
@@ -63,23 +64,17 @@ type Query
   @join__type(graph: SUBGRAPH_PRODUCT)
   @join__type(graph: SUBGRAPH_USER)
 {
-  users: [User] @join__field(graph: SUBGRAPH_PRODUCT)
-  userById(key: ID!): User @join__field(graph: SUBGRAPH_PRODUCT)
-  allProducts: [Product] @join__field(graph: SUBGRAPH_PRODUCT)
-  product(id: ID!): Product @join__field(graph: SUBGRAPH_PRODUCT)
-  sites: [Site] @join__field(graph: SUBGRAPH_PRODUCT)
-  siteById(key: ID!): Site @join__field(graph: SUBGRAPH_PRODUCT)
-  item: Item @join__field(graph: SUBGRAPH_USER)
+  products: [Product] @join__field(graph: SUBGRAPH_PRODUCT)
+  productById(id: ID!): Product @join__field(graph: SUBGRAPH_PRODUCT)
+  users: [User] @join__field(graph: SUBGRAPH_USER)
+  userById(id: ID!): User @join__field(graph: SUBGRAPH_USER)
+  testCache: TestCache @join__field(graph: SUBGRAPH_USER)
 }
 
-type Site
-  @join__type(graph: SUBGRAPH_PRODUCT, key: "Id")
-  @join__type(graph: SUBGRAPH_USER, key: "Id")
+type TestCache
+  @join__type(graph: SUBGRAPH_USER)
 {
-  Id: ID @join__field(graph: SUBGRAPH_PRODUCT, type: "ID") @join__field(graph: SUBGRAPH_USER, type: "ID!")
-  name: String
-  customer: String @join__field(graph: SUBGRAPH_PRODUCT)
-  landingDate: String! @join__field(graph: SUBGRAPH_USER)
+  result: String
 }
 
 type User
@@ -87,7 +82,6 @@ type User
   @join__type(graph: SUBGRAPH_USER, key: "id")
 {
   id: ID!
-  products: [Item] @join__field(graph: SUBGRAPH_PRODUCT)
   name: String! @join__field(graph: SUBGRAPH_USER)
   surname: String! @join__field(graph: SUBGRAPH_USER)
   items: [Item] @join__field(graph: SUBGRAPH_USER)

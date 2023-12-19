@@ -7,6 +7,12 @@ extend schema
 type Query {
   users: [User]
   userById(id: ID!): User
+  testCache: TestCache
+}
+
+# Temp type to test caching options with RestDataSource
+type TestCache {
+  result: String
 }
 
 type User @key(fields: "id") {
